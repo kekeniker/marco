@@ -4,7 +4,7 @@ executors:
   default:
     working_directory: /go/src/github.com/KeisukeYamashita/marco
     docker:
-      - image: circleci/golang:1.14
+      - image: circleci/golang:1.15
         environment:
           GO111MODULE: "on"
 
