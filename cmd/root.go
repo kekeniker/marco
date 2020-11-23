@@ -6,7 +6,7 @@ import (
 	"github.com/KeisukeYamashita/marco/cmd/application"
 	"github.com/KeisukeYamashita/marco/cmd/pipeline"
 	template "github.com/KeisukeYamashita/marco/cmd/pipeline-template"
-	"github.com/KeisukeYamashita/marco/cmd/version"
+	"github.com/KeisukeYamashita/marco/pkg/version"
 	"github.com/spf13/cobra"
 )
 

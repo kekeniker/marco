@@ -2,8 +2,23 @@ builds:
 - main: .
   ldflags: 
     - -s -w
-    - -X github.com/kekeniker/marco/cmd/version.Version={{.Tag}}
+    - -X github.com/kekeniker/marco/pkg/version.Version={{.Tag}}
   goos:
   - linux
   - darwin
   - windows
+brews:
+  - tap:
+      owner: kekeniker
+      name: homebrew-tap
+      token: {{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}
+    url_template: "http://github.mycompany.com/foo/bar/releases/{{ .Tag }}/{{ .ArtifactName }}"
+    download_strategy: CurlDownloadStrategy.
+    commit_author:
+      name: goreleaserbot
+      email: goreleaser@carlosbecker.com
+    folder: homebrew-marco
+    description: "Marco is a CLI tool for showing Spinnaker application, pipelines and pipeline templates"
+    homepage: "https://github.com/kekeniker/marco"
+    test: |
+      system "#{bin}/marco --version"
