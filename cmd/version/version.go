@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/kekeniker/pkg/version"
+	"github.com/kekeniker/marco/pkg/version"
 	"github.com/spf13/cobra"
 )
 
