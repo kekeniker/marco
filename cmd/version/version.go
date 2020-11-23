@@ -1,14 +1,15 @@
 package version
 
 import (
+	"fmt"
 	"io"
 
 	"github.com/spf13/cobra"
 )
 
 const (
-	// Version ...
-	Version = "0.1.0"
+	// Version is injected on release
+	Version = ""
 )
 
 // NewVersionCmd ...
@@ -16,7 +17,7 @@ func NewVersionCmd(out io.Writer) *cobra.Command {
 	cmd := &cobra.Command{
 		Use: "version",
 		Run: func(cmd *cobra.Command, args []string) {
-			return
+			fmt.Println(Version)
 		},
 	}
 

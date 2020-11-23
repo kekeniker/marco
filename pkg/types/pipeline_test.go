@@ -12,7 +12,7 @@ func TestParsePipeline(t *testing.T) {
 		"pass": {nil, nil},
 	}
 
-	for n, tc := range tcs {
+	for n, _ := range tcs {
 		t.Run(n, func(t *testing.T) {
 
 		})
