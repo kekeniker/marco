@@ -17,7 +17,7 @@ brews:
     commit_author:
       name: goreleaserbot
       email: goreleaser@carlosbecker.com
-    folder: homebrew-marco
+    folder: Formula
     description: "Marco is a CLI tool for showing Spinnaker application, pipelines and pipeline templates"
     homepage: "https://github.com/kekeniker/marco"
     test: |
