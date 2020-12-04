@@ -3,7 +3,7 @@ package pipeline_template
 import (
 	"io"
 
-	"github.com/KeisukeYamashita/marco/pkg/client"
+	"github.com/kekeniker/marco/pkg/client"
 	"github.com/spf13/cobra"
 )
 
