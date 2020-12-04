@@ -20,7 +20,7 @@ func newPipelineListCmd(out io.Writer, options *client.PipelineOptions) *cobra.C
 		RunE:    listPipeline(out, listOptions),
 	}
 
-	cmd.PersistentFlags().BoolVar(&listOptions.Expand, "expand", true, "expand pipeline template")
+	cmd.PersistentFlags().BoolVar(&listOptions.Expand, "expand", false, "expand pipeline template")
 	cmd.PersistentFlags().StringVarP(&listOptions.App, "application", "a", "", "specify Spinnaker application")
 	cmd.PersistentFlags().BoolVar(&listOptions.All, "all", false, "run for all Spinnaker applications")
 	return cmd

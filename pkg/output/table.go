@@ -109,6 +109,10 @@ func (mgr *TableOutputManager) putPipeline(pl *types.Pipeline) error {
 
 	for _, stage := range pl.Stages {
 		template := "(none)"
+		if pl.Template != nil {
+			template = strings.Split(pl.Template.Reference, "://")[1]
+		}
+
 		mergedRow := append(row, []string{template, stage.RefID, stage.Name, stage.Type}...)
 		mgr.tableWriter.Append(mergedRow)
 	}
