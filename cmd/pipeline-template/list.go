@@ -3,8 +3,8 @@ package pipeline_template
 import (
 	"io"
 
-	"github.com/KeisukeYamashita/marco/pkg/client"
-	"github.com/KeisukeYamashita/marco/pkg/output"
+	"github.com/kekeniker/marco/pkg/client"
+	"github.com/kekeniker/marco/pkg/output"
 	"github.com/spf13/cobra"
 )
 
@@ -15,9 +15,9 @@ func newPipelineTemplateListCmd(out io.Writer, options *client.PipelineTemplateO
 	}
 
 	cmd := &cobra.Command{
-		Use:  "list",
+		Use:     "list",
 		Aliases: []string{"ls"},
-		RunE: listPipelineTemplateCmd(out, listOptions),
+		RunE:    listPipelineTemplateCmd(out, listOptions),
 	}
 
 	return cmd

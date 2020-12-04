@@ -6,8 +6,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/KeisukeYamashita/marco/pkg/types"
-	"github.com/KeisukeYamashita/marco/pkg/validator"
+	"github.com/kekeniker/marco/pkg/types"
+	"github.com/kekeniker/marco/pkg/validator"
 	"github.com/spf13/pflag"
 	"github.com/spinnaker/spin/cmd/gateclient"
 )

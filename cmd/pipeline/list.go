@@ -3,8 +3,8 @@ package pipeline
 import (
 	"io"
 
-	"github.com/KeisukeYamashita/marco/pkg/client"
-	"github.com/KeisukeYamashita/marco/pkg/output"
+	"github.com/kekeniker/marco/pkg/client"
+	"github.com/kekeniker/marco/pkg/output"
 	"github.com/spf13/cobra"
 )
 
@@ -15,9 +15,9 @@ func newPipelineListCmd(out io.Writer, options *client.PipelineOptions) *cobra.C
 	}
 
 	cmd := &cobra.Command{
-		Use:  "list",
+		Use:     "list",
 		Aliases: []string{"ls"},
-		RunE: listPipeline(out, listOptions),
+		RunE:    listPipeline(out, listOptions),
 	}
 
 	cmd.PersistentFlags().BoolVar(&listOptions.Expand, "expand", true, "expand pipeline template")

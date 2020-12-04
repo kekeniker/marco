@@ -3,9 +3,9 @@ package application
 import (
 	"io"
 
-	"github.com/KeisukeYamashita/marco/pkg/client"
-	"github.com/KeisukeYamashita/marco/pkg/output"
-	"github.com/KeisukeYamashita/marco/pkg/validator"
+	"github.com/kekeniker/marco/pkg/client"
+	"github.com/kekeniker/marco/pkg/output"
+	"github.com/kekeniker/marco/pkg/validator"
 	"github.com/spf13/cobra"
 )
 

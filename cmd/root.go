@@ -3,11 +3,11 @@ package cmd
 import (
 	"io"
 
-	"github.com/KeisukeYamashita/marco/cmd/application"
-	"github.com/KeisukeYamashita/marco/cmd/pipeline"
-	template "github.com/KeisukeYamashita/marco/cmd/pipeline-template"
-	vcmd "github.com/KeisukeYamashita/marco/cmd/version"
-	"github.com/KeisukeYamashita/marco/pkg/version"
+	"github.com/kekeniker/marco/cmd/application"
+	"github.com/kekeniker/marco/cmd/pipeline"
+	template "github.com/kekeniker/marco/cmd/pipeline-template"
+	vcmd "github.com/kekeniker/marco/cmd/version"
+	"github.com/kekeniker/marco/pkg/version"
 	"github.com/spf13/cobra"
 )
 
