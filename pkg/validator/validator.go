@@ -11,15 +11,14 @@ var (
 	// See details in Spinnaker Orca
 	// ref: https://github.com/spinnaker/orca/blob/master/orca-applications/src/main/groovy/com/netflix/spinnaker/orca/applications/utils/ApplicationNameValidator.groovy
 	CloudProviders = map[string]applicationNameConstraint{
-		"appengine":     applicationNameConstraint{58, `^[a-z0-9]*$`},
-		"aws":           applicationNameConstraint{250, `^[a-zA-Z_0-9.]*$`},
-		"dcos":          applicationNameConstraint{127, `^[a-z0-9]*$`},
-		"kubernetes v1": applicationNameConstraint{63, `^([a-zA-Z][a-zA-Z0-9]*)$`},
-		"kubernetes v2": applicationNameConstraint{63, `^([a-zA-Z][a-zA-Z0-9-]*)$`},
-		"gce":           applicationNameConstraint{63, `^([a-zA-Z][a-zA-Z0-9]*)?$`},
-		"openstack":     applicationNameConstraint{250, `^[a-zA-Z_0-9.]*$`},
-		"tencentcloud":  applicationNameConstraint{50, `^[a-zA-Z_0-9.-]*$`},
-		"titus":         applicationNameConstraint{250, `^[a-zA-Z_0-9.]*$`},
+		"appengine":    applicationNameConstraint{58, `^[a-z0-9]*$`},
+		"aws":          applicationNameConstraint{250, `^[a-zA-Z_0-9.]*$`},
+		"dcos":         applicationNameConstraint{127, `^[a-z0-9]*$`},
+		"kubernetes":   applicationNameConstraint{63, `^([a-zA-Z][a-zA-Z0-9-]*)$`},
+		"gce":          applicationNameConstraint{63, `^([a-zA-Z][a-zA-Z0-9]*)?$`},
+		"openstack":    applicationNameConstraint{250, `^[a-zA-Z_0-9.]*$`},
+		"tencentcloud": applicationNameConstraint{50, `^[a-zA-Z_0-9.-]*$`},
+		"titus":        applicationNameConstraint{250, `^[a-zA-Z_0-9.]*$`},
 	}
 )
 
