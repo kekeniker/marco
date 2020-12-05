@@ -9,6 +9,14 @@ With `marco`, you can check these items organizantion-wide:
 * All Spinnaker applications name 
 * Pipeline and stages statistics
 
+## Install
+
+Install by this command.
+
+```console
+$ brew install kekeniker/tap/marco
+```
+
 ## Configuration
 
 `marco` uses the same configuration file with [spinnaker/spin](https://github.com/spinnaker/spin), the Spinnaker CLI.
