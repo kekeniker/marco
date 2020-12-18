@@ -13,7 +13,6 @@ brews:
       name: homebrew-tap
       token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
     url_template: "http://github.com/kekeniker/marco/releases/{{ .Tag }}/{{ .ArtifactName }}"
-    download_strategy: CurlDownloadStrategy.
     commit_author:
       name: goreleaserbot
       email: goreleaser@carlosbecker.com
