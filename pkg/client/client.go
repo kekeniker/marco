@@ -3,6 +3,7 @@ package client
 import (
 	"fmt"
 	"net/http"
+	"os"
 	"sort"
 	"strings"
 
@@ -10,6 +11,8 @@ import (
 	"github.com/kekeniker/marco/pkg/validator"
 	"github.com/spf13/pflag"
 	"github.com/spinnaker/spin/cmd/gateclient"
+	"github.com/spinnaker/spin/cmd/output"
+	gate "github.com/spinnaker/spin/gateapi"
 )
 
 type AppOptions struct{}
@@ -68,7 +71,29 @@ func New(flags *pflag.FlagSet, opts ...ClientOption) (Client, error) {
 		opt(o)
 	}
 
-	gateClient, err := gateclient.NewGateClient(flags)
+	outputFormater, err := output.ParseOutputFormat("")
+	if err != nil {
+		return nil, err
+	}
+	ui := output.NewUI(false, true, outputFormater, os.Stdout, os.Stderr)
+	endpoint, err := flags.GetString("gate-endpoint")
+	if err != nil {
+		return nil, err
+	}
+	headers, err := flags.GetString("default-headers")
+	if err != nil {
+		return nil, err
+	}
+	config, err := flags.GetString("config")
+	if err != nil {
+		return nil, err
+	}
+	ignoreCertErrors, err := flags.GetBool("insecure")
+	if err != nil {
+		return nil, err
+	}
+
+	gateClient, err := gateclient.NewGateClient(ui, endpoint, headers, config, ignoreCertErrors)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +105,8 @@ func New(flags *pflag.FlagSet, opts ...ClientOption) (Client, error) {
 
 // ListApplications list all applications
 func (c *ClientImpl) ListApplications(options *AppListOptions) ([]types.Application, error) {
-	apps, resp, err := c.spinnaker.ApplicationControllerApi.GetAllApplicationsUsingGET(c.spinnaker.Context, map[string]interface{}{})
+	opts := &gate.ApplicationControllerApiGetAllApplicationsUsingGETOpts{}
+	apps, resp, err := c.spinnaker.ApplicationControllerApi.GetAllApplicationsUsingGET(c.spinnaker.Context, opts)
 	if err != nil {
 		return nil, err
 	}
@@ -219,7 +245,8 @@ func (c *ClientImpl) ListPipelines(options *PipelineListOptions) ([]types.Pipeli
 
 // GetPipelineTemplate gets a pipeline by ID
 func (c *ClientImpl) GetPipelineTemplate(id string, options *PipelineTemplateGetOptions) (*types.PipelineTemplate, error) {
-	pipeline, resp, err := c.spinnaker.V2PipelineTemplatesControllerApi.GetUsingGET1(c.spinnaker.Context, id)
+	opts := &gate.V2PipelineTemplatesControllerApiGetUsingGET2Opts{}
+	pipeline, resp, err := c.spinnaker.V2PipelineTemplatesControllerApi.GetUsingGET2(c.spinnaker.Context, id, opts)
 	if err != nil {
 		return nil, err
 	}
@@ -238,9 +265,10 @@ func (c *ClientImpl) GetPipelineTemplate(id string, options *PipelineTemplateGet
 
 // ListPipelineTemplates gets all pipeline of the application
 func (c *ClientImpl) ListPipelineTemplates(options *PipelineTemplateListOptions) ([]types.PipelineTemplate, error) {
+	opts := &gate.V2PipelineTemplatesControllerApiListUsingGET1Opts{}
 	pts, resp, err := c.spinnaker.V2PipelineTemplatesControllerApi.ListUsingGET1(
 		c.spinnaker.Context,
-		map[string]interface{}{"scopes": "global"},
+		opts,
 	)
 
 	if err != nil {
