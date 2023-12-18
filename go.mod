@@ -4,7 +4,7 @@ go 1.16
 
 require (
 	github.com/olekukonko/tablewriter v0.0.4
-	github.com/spf13/cobra v1.1.3
+	github.com/spf13/cobra v1.8.0
 	github.com/spf13/pflag v1.0.5
 	github.com/spinnaker/spin v0.4.1-0.20201211003717-9e6d8f2f1f78
 )
